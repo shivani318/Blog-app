@@ -1,0 +1,19 @@
+<%= bootstrap_form_for(@profile) do |form| %>
+  <%= form.text_field :firstname %>
+  <%= form.text_field :lastname %><br>
+  <%= form.file_field :image %>
+  <%= form.select :country, CountryStateSelect.countries_collection, {}, prompt: 'Select One', :id => "on-change-country" %>
+  <%= options = { form: form, field_names: { :country => :country, :state => :state } }
+  form.select :state, CountryStateSelect.state_options(options)[:collection] %>
+  <%#binding.pry %>
+  <%= form.submit %>
+<% end %>
+<script type="text/javascript">
+  $("#on-change-country").on('change',function() {
+    debugger
+    return CountryStateSelect({
+      country_id: "country",
+      state_id: "state"
+    });
+  });
+</script>

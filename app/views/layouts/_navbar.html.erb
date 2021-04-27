@@ -1,0 +1,27 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">Blog</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+         <% if user_signed_in? %>
+          <%= link_to "Edit Registration", edit_user_registration_path, :class => 'navbar-brand' %>
+          <%= link_to "LogOut", destroy_user_session_path, method: :delete, :class => 'navbar-brand' %>
+          <%= link_to current_user.email, :class => 'navbar-brand' %>
+        <% else %>
+          <%= link_to "SignUp", new_user_registration_path, :class => 'navbar-brand' %>
+          <%= link_to "LogIn", new_user_session_path, :class => 'navbar-brand' %>
+        <% end %>
+        <% if user_signed_in? && current_user.profile.present? %>
+          <%= link_to "ShowProfile", profile_path(current_user.profile), :class => 'navbar-brand' %>
+          <%= link_to "EditProfile", edit_profile_path(current_user.profile), :class => 'navbar-brand'%>
+        <% else %>
+          <%= link_to "CreateProfile", new_profile_path, :class => 'navbar-brand' %>
+        <% end %>
+      </li>
+    </ul>
+  </div>
+</nav>

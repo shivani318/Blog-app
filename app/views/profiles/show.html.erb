@@ -1,0 +1,23 @@
+<div class="col-md-12 col-md-offset-12">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Firstname</th>
+        <th>Lastname</th>
+        <th>Image</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><%= @profile.firstname %></td>
+        <td><%= @profile.lastname %></td>
+        <td>
+          <% if @profile.image.attached? %>
+            <%= image_tag @profile.image ,size: "350x250"%>
+          <% end %>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<%= link_to 'Back', root_path, :class => "button btn btn-primary" %>

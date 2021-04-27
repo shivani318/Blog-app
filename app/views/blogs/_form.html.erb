@@ -1,0 +1,7 @@
+<%= bootstrap_form_for(@blog) do |form| %>
+  <%= form.text_field :name %>
+  <%= form.file_field :image %>
+  <%= form.text_area :description %>
+  <%= form.date_field :launch_date %>
+  <%= form.submit %>
+<% end %>
