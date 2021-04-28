@@ -1,0 +1,3 @@
+$("tr#row_<%= current_user.profile.id%> form").remove();
+$("tr#row_<%= current_user.profile.id%>").replaceWith("<%= j render @profile %>");
+

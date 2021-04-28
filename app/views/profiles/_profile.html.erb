@@ -1,0 +1,16 @@
+<% if current_user.profile.present? %>
+  <tr id="row_<%= current_user.profile.id%>">
+    <td><%= current_user.profile.firstname %></td>
+    <td><%= current_user.profile.lastname %></td>
+    <td>
+      <% if current_user.profile.image.attached? %>
+        <%= image_tag current_user.profile.image ,size: "250x150"%>
+      <%end %>
+    </td>
+    <td><%= current_user.profile.country %></td>
+    <td><%= current_user.profile.state %></td>
+    <td><%= current_user.profile.city %></td>
+    <!-- <td id="row_<%#= current_user.profile.id%>"><%#= link_to "Edit my profile", edit_profile_path(current_user.profile), remote: true, :class => "button btn btn-primary" %></td> -->
+    <td><%= link_to "Delete my profile", profile_path(current_user.profile), method: :delete, remote: true, :class => "button btn btn-danger" %></td>
+  </tr>
+<% end %>

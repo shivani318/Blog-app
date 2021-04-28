@@ -57,4 +57,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'devise'
 gem 'devise-bootstrap-views', '~> 1.0'
 gem "bootstrap_form", "~> 4.0"
-gem 'country_state_select'
+gem 'city-state'
+

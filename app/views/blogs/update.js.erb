@@ -1,0 +1,3 @@
+$("tr#row_<%= @blog.id%> form").remove();
+$("tr#row_<%= @blog.id%>").replaceWith("<%= j render @blog %>");
+

@@ -4,7 +4,11 @@
       <tr>
         <th>Firstname</th>
         <th>Lastname</th>
-        <th>Image</th>
+        <th><center>Image</center></th>
+        <th>Country</th>
+        <th>State</th>
+        <th>City</th>
+        <th>Action</th>
       </tr>
     </thead>
     <tbody>
@@ -16,6 +20,10 @@
             <%= image_tag @profile.image ,size: "350x250"%>
           <% end %>
         </td>
+        <td><%= @profile.country %></td>
+        <td><%= @profile.state %></td>
+        <td><%= @profile.city %></td>
+        <td><%= link_to "Delete my profile", profile_path(current_user.profile), method: :delete, remote: true, :class => "button btn btn-danger" %></td>
       </tr>
     </tbody>
   </table>

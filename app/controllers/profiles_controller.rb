@@ -11,7 +11,9 @@ class ProfilesController < ApplicationController
   def create
     @profile = current_user.create_profile(profile_params)
     if @profile.save
-      redirect_to @profile
+      respond_to do |format|
+        format.html { redirect_to @profile, notice: 'Profile was successfully created' }
+      end
     else
       render :new
     end
@@ -22,7 +24,10 @@ class ProfilesController < ApplicationController
 
   def update
     if @profile.update(profile_params)
-      redirect_to @profile
+      respond_to do |format|
+        format.html { redirect_to @profile, notice: 'Profile was successfully updated' }
+        # format.js
+      end
     else
       render :edit
     end
@@ -30,12 +35,15 @@ class ProfilesController < ApplicationController
 
   def destroy
     @profile.destroy
-    redirect_to root_path
+    respond_to do |format|
+      # format.html { redirect_to root_path, notice: 'Profile was successfully destroyed'}
+      format.js
+    end
   end
 
   private
     def profile_params
-      params.require(:profile).permit(:firstname, :lastname, :image, :country, :state)
+      params.require(:profile).permit(:firstname, :lastname, :image, :country, :state, :city)
     end
 
     def set_profile

@@ -1,3 +1,29 @@
+<%#unless current_user.profile.present? %>
+  <div id = 'new_profile'>
+    <%= link_to "CreateProfile", new_profile_path, :class => 'navbar-brand' %>
+  </div>
+<%#end %>
+
+<div class="col-md-12 col-md-offset-12">
+  <table class="table" id="profile">
+    <thead>
+      <tr>
+        <th>Firstname</th>
+        <th>Lastname</th>
+        <th><center>Image</center></th>
+        <th>Country</th>
+        <th>State</th>
+        <th>City</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= render partial: 'profiles/profile', locals:{profile: current_user.profile} %>
+    </tbody>
+  </table>
+</div>
+
+
 <br><br><br>
 <center><h1><%= link_to "Click here to see All Blogs", blogs_path %></h1></center>
 

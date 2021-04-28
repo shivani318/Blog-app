@@ -1,0 +1,23 @@
+<p>
+  <strong>Name:</strong>
+  <%= @blog.name %>
+</p>
+
+<p>
+  <strong>Image:</strong>
+    <% if @blog.image.attached? %>
+      <%= image_tag @blog.image ,size: "150x150" %>
+    <% end %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @blog.description %>
+</p>
+
+<p>
+  <strong>Launch Date:</strong>
+  <%= @blog.launch_date %>
+</p>
+
+

@@ -1,32 +1,25 @@
-<%= link_to "New", new_blog_path, :class => "button btn btn-success float-right space" %>
+<div id = 'new_blog'>
+  <%= link_to "New", new_blog_path, :class => "button btn btn-success", remote: true %>
+</div>
 <br>
 
 <div class="col-md-12 col-md-offset-12 space-between">
-  <table class="table">
+  <table class="table" id="blogs">
     <thead>
       <tr>
         <th>Name</th>
         <th><center>Image</center></th>
         <th>Description</th>
         <th>Launch Date</th>
-        <th>Action</th>
+        <th><center>Action</center></th>
       </tr>
     </thead>
     <tbody>
-      <% @blogs.each do |blog| %>
-        <tr>
-          <td><%= blog.name %></td>
-          <td>
-            <% if blog.image.attached? %>
-              <%= image_tag blog.image ,size: "150x150"%>
-            <% end %>
-          </td>
-          <td><%= blog.description %></td>
-          <td><%= blog.launch_date %></td>
-          <td><%= link_to "Edit Blog", edit_blog_path(blog), :class => "button btn btn-secondary click-on"%></td>
-        </tr>
-      <% end %>
+        <% @blogs.each do |blog| %>
+          <%= render partial: 'blog', locals:{blog: blog} %>
+        <% end %>
     </tbody>
   </table>
 </div>
+
 <%= link_to "Back", root_path, :class => "button btn btn-primary"%>

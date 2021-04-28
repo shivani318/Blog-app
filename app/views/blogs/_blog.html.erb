@@ -1,0 +1,14 @@
+<tr id="row_<%= blog.id%>">
+  <td><%= blog.name %></td>
+  <td>
+    <% if blog.image.attached? %>
+      <%= image_tag blog.image ,size: "150x150"%>
+    <% end %>
+  </td>
+  <td><%= blog.description %></td>
+  <td><%= blog.launch_date %></td>
+  <td id="row_<%= blog.id%>"><%= link_to "Edit Blog", edit_blog_path(blog), remote: true, :class => "button btn btn-info click-on"%></td>
+  <td id="column_<%= blog.id%>"><%= link_to "Show Blog", blog_path(blog), remote: true, :class => "button btn btn-primary"%></td>
+  <td><%= link_to "Delete Blog", blog_path(blog), method: :delete, remote: true, :class => "button btn btn-danger click-on"%></td>
+</tr>
+

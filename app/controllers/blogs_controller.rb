@@ -21,7 +21,10 @@ class BlogsController < ApplicationController
     @blog = current_user.blogs.new(blog_params)
 
     if @blog.save
-      redirect_to blogs_url
+      respond_to do |format|
+        # format.html { edirect_to blogs_url, notice: 'Blog was successfully created' }
+        format.js
+      end
     else
       render :new
     end
@@ -32,7 +35,10 @@ class BlogsController < ApplicationController
 
   def update
     if @blog.update(blog_params)
-      redirect_to blogs_url
+      respond_to do |format|
+      # format.html { redirect_to blogs_url, notice: 'Blog was successfully destroyed'}
+        format.js
+      end
     else
       render :edit
     end
@@ -40,7 +46,10 @@ class BlogsController < ApplicationController
 
   def destroy
     @blog.destroy
-    redirect_to root_path
+    respond_to do |format|
+      # format.html { redirect_to root_path, notice: 'Blog was successfully destroyed'}
+      format.js
+    end
   end
 
   private
